@@ -17,6 +17,7 @@ import { User } from '../../types'
 import { AuthContext } from '../../context/authContext'
 import { useNavigate  } from "react-router";
 import { useSnackbar } from "notistack";
+import { UserService } from "../../services";
 
 const schema = yup.object().shape({
   name: yup.string().required("Username is required"),
@@ -39,25 +40,14 @@ const AuthenticationForm = () => {
 
   const onSubmit = async (user: User.User) => {
       console.log("inside on submit")
-    try {
-    //   const { access_token, expires_in } = await AccountService.RequestToken(
-    //     data.username,
-    //     data.password
-    //   );
 
-    //   const expirationTime = new Date(
-    //     new Date().getTime() + Number(expires_in) * 1000
-    //   );
-    //   console.log(`Expiration time: `, expirationTime);
+      
+      try {
+        const createdUser: User.User = await UserService.CreateUser(user)
 
-    //   authContext.login(access_token, expirationTime);
-        console.log(authContext.setUser, '!')
-        // authContext.setUser({name: data.name, surname: data.surname})
-      authContext.setUser(user)
-    //   await authContext.fetchCurrentUser();
-     console.log('navigating...')
-      navigate("/");
-    //   navigate("/", {replace: true});
+        authContext.authenticate(createdUser)
+        console.log('navigating...')
+        navigate("/");
     } catch (e:any) {
         console.log(e)
     //   enqueueSnackbar(e.message, { variant: "error" });

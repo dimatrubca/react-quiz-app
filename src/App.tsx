@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 import { RouterContainer } from "./containers/router-container";
+import { AuthContextProvider } from './context';
 
 function App() {
   return (
     <div className="App">
-          <RouterContainer />
+          <AuthContextProvider>
+            <RouterContainer />
+          </AuthContextProvider>
     </div>
   );
 }

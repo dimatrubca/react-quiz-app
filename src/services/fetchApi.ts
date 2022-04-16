@@ -6,10 +6,11 @@ const fetchApi = <TResponse>(
     if (!config.hasOwnProperty("headers")) {
       config.headers = {};
     }
-    config.headers["Authorization"] = getUserToken();
+    config.headers["X-Access-Token"] = process.env.REACT_APP_ACCESS_TOKEN;
+    
   
     console.log("config: ", config);
-    return fetch(`https://localhost:5002/api${url}`, config)
+    return fetch(`https://pure-caverns-82881.herokuapp.com/api/v54${url}`, config)
       .then((res) => {
         if (!res.ok) {
           return res.text().then((text) => {
@@ -22,8 +23,6 @@ const fetchApi = <TResponse>(
       .then((data) => (data ? JSON.parse(data) : {}));
   };
   
-  const getUserToken = (): string => {
-    return "Bearer " + localStorage.getItem("token");
-  };
+
   
   export { fetchApi };

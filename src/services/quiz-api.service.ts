@@ -1,3 +1,4 @@
+import { User } from "../types";
 import { fetchApi } from "./fetchApi";
 
 const GetQuizzes = () => {
@@ -23,3 +24,13 @@ const ShowQuiz = () => {
 const SubmitQuizResponse = () => {
     
 }
+
+
+const QuizAPIService = {
+    GetQuizzes,
+    CreateQuiz,
+    ShowQuiz,
+    SubmitQuizResponse
+}
+
+export { QuizAPIService }
