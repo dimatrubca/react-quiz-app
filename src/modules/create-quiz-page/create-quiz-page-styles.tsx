@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   questionHint: {
       margin: '10px 0'
   },
+  questionContainer: {
+    margin: '50px 0'
+  },
   answerOption: {
       marginBottom: '10px',
       marginTop: '10px',
@@ -29,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   right: {
     float: 'right'
+  },
+  divider: {
+      marginBottom: theme.spacing(6)
   }
 }));
 export { useStyles };

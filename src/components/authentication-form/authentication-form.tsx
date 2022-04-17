@@ -20,15 +20,15 @@ import { useSnackbar } from "notistack";
 import { UserService } from "../../services";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Username is required"),
-  surname: yup.string().required("No password provided"),
+  name: yup.string().required("Name is required"),
+  surname: yup.string().required("No surname provided"),
 });
 
 const AuthenticationForm = () => {
   const classes = useStyles();
   const authContext = useContext(AuthContext);
   const navigate = useNavigate ();
-//   const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const {
     register,
@@ -50,7 +50,8 @@ const AuthenticationForm = () => {
         navigate("/");
     } catch (e:any) {
         console.log(e)
-    //   enqueueSnackbar(e.message, { variant: "error" });
+        let errorMessage = JSON.parse(e['message'])
+        enqueueSnackbar(errorMessage['message'], { variant: "error" });
     }
   };
 
@@ -63,7 +64,6 @@ const AuthenticationForm = () => {
             autoComplete="uname"
             name="name"
             variant="outlined"
-            required
             fullWidth
             id="name"
             label="Name"
@@ -76,7 +76,6 @@ const AuthenticationForm = () => {
           <TextField
             {...register("surname")}
             variant="outlined"
-            required
             fullWidth
             name="surname"
             label="Surname"

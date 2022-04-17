@@ -9,7 +9,6 @@ const useStyles = makeStyles(() => ({
         "@media (max-width: 900px)": {
             paddingLeft: 0,
           },
-        position: 'relative'
       },
 
     logo: {

@@ -20,11 +20,9 @@ const RouterContainer = () => {
       <Userbar />
       <Routes>
         <Route path="/authenticate" element={<AuthenticationPage/>} />
-        {/* <Route path="/" element={<QuizListPage/>}/> */}
-        <Route path="/1" element={authContext.isAuthenticated ? <QuestionPage/> : <Navigate to="/authenticate"/>}/>
-        <Route path="/quizzes/create" element={authContext.isAuthenticated ? <CreateQuizPage/> : <Navigate to="/authenticate"/>}/>
-
         <Route path="/" element={authContext.isAuthenticated ? <QuizListPage/> : <Navigate to="/authenticate"  />}/>
+        <Route path="/quizzes/create" element={authContext.isAuthenticated ? <CreateQuizPage/> : <Navigate to="/authenticate"/>}/>
+        <Route path="/quizzes/:id" element={authContext.isAuthenticated ? <QuestionPage/> : <Navigate to="/authenticate"/>}/>
       </Routes>
     </Router>
   );

@@ -4,10 +4,17 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%",
     marginTop: theme.spacing(3),
-    minWidth: "400px"
+    minWidth: '300px',
+
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      minWidth: '500px'
+    },
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+  submitBtn: {
+    margin: theme.spacing(5, 0, 2),
+    marginTop: theme.spacing(3),
+    width: '150px', 
+    alignSelf: 'end',
   },
 }));
 export { useStyles };

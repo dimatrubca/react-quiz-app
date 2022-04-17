@@ -16,6 +16,7 @@ const Userbar = () => {
   const classes = useStyles();
   const authContext = useContext(AuthContext);
 
+  console.log("insideuserbar: authenticated:", authContext.isAuthenticated)
   if (!authContext.isAuthenticated) {
       return <></>
   }
@@ -23,10 +24,10 @@ const Userbar = () => {
   return (
     <>
       <Container className={classes.root}>
-            <RouterLink href="/profile">
+            <Typography>
               {" "}
               Welcome {authContext.user?.name} {authContext.user?.surname}!
-            </RouterLink>
+            </Typography>
 
             <RouterLink
               href="/authenticate"

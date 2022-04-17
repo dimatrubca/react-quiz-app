@@ -8,11 +8,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    textAlign: 'start'
   },
 
   main: {

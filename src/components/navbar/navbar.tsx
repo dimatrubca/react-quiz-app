@@ -22,38 +22,22 @@ const headersData = [
     href: "/",
   },
   {
-    label: "Search Books",
-    href: "/search",
-  },
-  {
-    label: "Post Book",
-    href: "/post-book",
-  },
-  {
-    label: "Add book",
-    href: "/add-book",
+    label: "Create QUiz",
+    href: "/quizzes/create",
   },
 ];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [signUpOpen, setSignUpOpen] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const handleSignUpOpen = () => {
-    setSignUpOpen(true);
-  };
-
-  const handleSignUpClose = () => {
-    setSignUpOpen(false);
-  };
 
   const displayDesktop = () => {
     return (
       <Toolbar className={classes.toolbar}>
-        {bookExchangeLogo}
+        {logoComponent}
         <div>{getMenuButtons()}</div>
       </Toolbar>
     );
@@ -91,7 +75,7 @@ const Navbar = () => {
           <div>{getDrawerChoices()}</div>
         </Drawer>
 
-        <div>{bookExchangeLogo}</div>
+        <div>{logoComponent}</div>
       </Toolbar>
     );
   };
@@ -114,7 +98,7 @@ const Navbar = () => {
     });
   };
 
-  const bookExchangeLogo = (
+  const logoComponent = (
     <Typography variant="h6" component="h1" className={classes.logo}>
       QuizApp
     </Typography>
@@ -136,31 +120,7 @@ const Navbar = () => {
       );
     });
 
-    let signUpButton = (
-      <Button color="inherit" onClick={handleSignUpOpen}>
-        {" "}
-        Sign Up
-      </Button>
-    );
-
     return <>{buttons}</>;
-  };
-
-  const getMenuItems = () => {
-    return headersData.map(({ label, href }) => {
-      return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            component: RouterLink,
-          }}
-        >
-          {label}
-        </Button>
-      );
-    });
   };
 
   return (
